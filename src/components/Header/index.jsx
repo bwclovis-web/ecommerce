@@ -7,8 +7,7 @@ import {ReactComponent as Logo} from '../../Assets/crown.svg';
 import CartIcon from '../CartIcon';
 import CartDropdown from '../CartDropdown';
  
-const Header = ({currentUser}) => {
-    console.log('%c [currentUser]', 'color:blue',currentUser)
+const Header = ({currentUser, isHidden}) => {
     return (
         <div className="header">
             <Link to="/">
@@ -34,14 +33,15 @@ const Header = ({currentUser}) => {
                 }
                 <CartIcon />
             </div>
-            <CartDropdown />
+            {isHidden ? null : <CartDropdown />}
         </div>
     );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({user: {currentUser}, cart: {isHidden}}) => {
      return {
-        currentUser: state.user.currentUser
+        currentUser,
+        isHidden
     };
 };
  
