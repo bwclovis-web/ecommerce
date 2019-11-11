@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.config';
 import {connect} from 'react-redux'
 import './styles.scss';
-import {ReactComponent as Logo} from '../../Assets/crown.svg'
+import {ReactComponent as Logo} from '../../Assets/crown.svg';
+import CartIcon from '../CartIcon';
+import CartDropdown from '../CartDropdown';
  
 const Header = ({currentUser}) => {
     console.log('%c [currentUser]', 'color:blue',currentUser)
@@ -30,7 +32,9 @@ const Header = ({currentUser}) => {
                         Log In
                     </Link>
                 }
+                <CartIcon />
             </div>
+            <CartDropdown />
         </div>
     );
 }
