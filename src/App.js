@@ -32,8 +32,6 @@ class App extends Component {
               ...snapShot.data()
             }
           })
-
-          console.log('%c [STATE]', 'color:purple', this.state)
         })
       } else {
         this.setState({
