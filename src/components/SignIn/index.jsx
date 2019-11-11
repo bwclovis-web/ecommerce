@@ -3,6 +3,8 @@ import './styles.scss';
 
 import FormInput from '../FormInput';
 import Button from '../Button';
+
+import {signInWithGoogle} from '../../firebase/firebase.config';
  
 class SignIn extends Component {
     constructor(props) {
@@ -52,7 +54,10 @@ class SignIn extends Component {
                         label="password"
                         required
                     />
-                    <Button type="submit">Sign In</Button>
+                    <div className="controls">
+                        <Button type="submit">Sign In</Button>
+                        <Button type="button" onClick={signInWithGoogle} isGoogleSignin>Sign In With Google</Button>
+                    </div>
                 </form>
             </div>
         );
