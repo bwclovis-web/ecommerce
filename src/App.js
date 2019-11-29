@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect'
+import {createStructuredSelector} from 'reselect';
+
 import './App.css';
 import {auth, createUserProfile} from './firebase/firebase.config';
 import {setCurrentUser} from './redux/user/user.actions';
@@ -32,6 +33,8 @@ class App extends Component {
       } else {
         setCurrentUser(userAuth)
       }
+
+      
     })
   }
 

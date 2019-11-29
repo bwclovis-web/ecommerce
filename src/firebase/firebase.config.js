@@ -12,6 +12,36 @@ const config = {
     appId: "1:181445219164:web:7555e597b7f02d43fb2799"
   }
 
+  export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+      const collectionRef = firestore.collection(collectionKey);
+
+        const batch = firestore.batch();
+        objectsToAdd.forEach(obj => {
+            const newDocRef = collectionRef.doc();
+            batch.set(newDocRef, obj)
+        });
+
+        return await batch.commit();
+  }
+
+  export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollections = collections.docs.map(doc => {
+        const {title, items} = doc.data();
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    return transformedCollections.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    },{})
+  }
+
   export const createUserProfile = async (userAuth, data) => {
     if(!userAuth) return;
 
