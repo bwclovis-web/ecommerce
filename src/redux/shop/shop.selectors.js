@@ -9,3 +9,7 @@ export const selectCollectionsForPreview = createSelector(selectShopData, data =
 export const selectedCollectionItem = urlparam => {
     return (createSelector(selectShopData, collections => collections ? collections[urlparam] : null))
 };
+
+export const selectIsShopFetching = createSelector(selectShop, data => data.isFetching);
+
+export const selectIsCollectionsLoaded = createSelector(selectShop, data => !!data.collections)
